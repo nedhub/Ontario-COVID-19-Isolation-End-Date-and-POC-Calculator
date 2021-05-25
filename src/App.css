@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.checkboxlabel {
+  text-align: center;
+  font-size: 1.25em;
+  margin-top: 1.5em;
+}
