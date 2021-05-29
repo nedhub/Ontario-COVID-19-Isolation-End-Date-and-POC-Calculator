@@ -153,6 +153,52 @@ export default function App() {
 
 
 
+      var queryCollection = db.collection("patients");
+      
+
+
+      //QUERYING PATIENTS 
+
+
+      
+
+
+      queryCollection.doc("Patient_1").set({
+        name: "Jumal Kanifra", state: "TO", country: "CANADA",
+        regions: ["west_coast", "norcal"] });
+      queryCollection.doc("Patient_2").set({
+        name: "Micheal Faraday", state: "CA", country: "USA",
+        regions: ["west_coast", "socal"] });
+      queryCollection.doc("DC").set({
+        name: "Washington, D.C.", state: null, country: "USA",
+        regions: ["east_coast"] });
+      queryCollection.doc("Yosima Masaki").set({
+        name: "Tokyo", state: null, country: "Japan",
+        regions: ["kanto", "honshu"] });
+      queryCollection.doc("Samina Okeremfrignpawë").set({
+        name: "Istandbul", state: null, country: "Turkey",
+        regions: ["jingjinji", "hebei"] });
+
+
+        var query = queryCollection.where("state", "==", "CA");
+
+
+
+
+        db.collection("patients").where("state", "==", "CA")
+    .get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+        });
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
+    });
+
+
+
 
     event.preventDefault();
     console.log( selectedDate, selectedDate2); 
